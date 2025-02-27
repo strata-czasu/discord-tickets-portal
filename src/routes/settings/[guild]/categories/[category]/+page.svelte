@@ -302,6 +302,29 @@
 				</div>
 				<div>
 					<label class="font-medium">
+						Button style
+						{#if category.id}
+							<Required />
+						{/if}
+						<i
+							class="fa-solid fa-circle-question cursor-help text-gray-500 dark:text-slate-400"
+							title="Button style used for panels (Primary = 1, Secondary = 2, Success = 3, Danger = 4, Link = 5, Premium = 6)"
+						></i>
+						<span class="text-2xl">{emoji.get(category.emoji) ?? ''}</span>
+						<!-- TODO: Select dropdown -->
+						<input
+							type="number"
+							class="input form-input"
+							min="1"
+							max="6"
+							placeholder="2"
+							required={!!category.id}
+							bind:value={category.buttonStyle}
+						/>
+					</label>
+				</div>
+				<div>
+					<label class="font-medium">
 						Emoji
 						<Required />
 						<i
