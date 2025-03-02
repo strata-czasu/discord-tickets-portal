@@ -1,3 +1,4 @@
 {
-	"cSpell.words": ["cooldown", "skyra", "uuidv"]
+	"cSpell.words": ["cooldown", "skyra", "uuidv"],
+	"editor.defaultFormatter": "esbenp.prettier-vscode"
 }
