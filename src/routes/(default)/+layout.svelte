@@ -26,7 +26,7 @@
 		{/snippet}
 	</Modals> -->
 	{#if $navigating || !mounted}
-		<div class="h-dvh flex items-center justify-center">
+		<div class="flex h-dvh items-center justify-center">
 			<Spinner />
 		</div>
 	{:else}
