@@ -136,8 +136,7 @@
 							>
 						</p>
 						<p>
-							&copy;
-							2025
+							&copy; 2025
 							<a
 								href="https://eartharoid.me"
 								target="_blank"
