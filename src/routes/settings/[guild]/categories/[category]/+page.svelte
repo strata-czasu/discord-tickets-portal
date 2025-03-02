@@ -45,6 +45,14 @@
 
 	let { category, channels, roles, url } = $state(data);
 
+	const buttonStyles = [
+		{name: 'Primary', value: 1},
+		{name: 'Secondary', value: 2},
+		{name: 'Success', value: 3},
+		{name: 'Danger', value: 4},
+		{name: 'Link', value: 5},
+		{name: 'Premium', value: 6},
+	];
 	const slowmodes = [
 		'5s',
 		'10s',
@@ -308,19 +316,20 @@
 						{/if}
 						<i
 							class="fa-solid fa-circle-question cursor-help text-gray-500 dark:text-slate-400"
-							title="Button style used for panels (Primary = 1, Secondary = 2, Success = 3, Danger = 4, Link = 5, Premium = 6)"
+							title="Button style used for panels"
 						></i>
 						<span class="text-2xl">{emoji.get(category.emoji) ?? ''}</span>
-						<!-- TODO: Select dropdown -->
-						<input
-							type="number"
-							class="input form-input"
-							min="1"
-							max="6"
-							placeholder="2"
-							required={!!category.id}
-							bind:value={category.buttonStyle}
-						/>
+						<select class="input form-multiselect font-normal" bind:value={category.buttonStyle}>
+							{#each buttonStyles as buttonStyle}
+								<option
+									value={buttonStyle.value}
+									class="p-1"
+									selected="{(!!category.id) ? buttonStyle.value === category.buttonStyle : buttonStyle.value === 2}"
+								>
+									{buttonStyle.name}
+								</option>
+							{/each}
+						</select>
 					</label>
 				</div>
 				<div>
