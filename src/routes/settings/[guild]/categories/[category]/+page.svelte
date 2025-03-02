@@ -46,10 +46,10 @@
 	let { category, channels, roles, url } = $state(data);
 
 	const buttonStyles = [
-		{name: 'Primary', value: 1},
-		{name: 'Secondary', value: 2},
-		{name: 'Success', value: 3},
-		{name: 'Danger', value: 4},
+		{ name: 'Primary', value: 1 },
+		{ name: 'Secondary', value: 2 },
+		{ name: 'Success', value: 3 },
+		{ name: 'Danger', value: 4 }
 	];
 	const slowmodes = [
 		'5s',
@@ -322,7 +322,9 @@
 								<option
 									value={buttonStyle.value}
 									class="p-1"
-									selected="{(!!category.id) ? buttonStyle.value === category.buttonStyle : buttonStyle.value === 2}"
+									selected={!!category.id
+										? buttonStyle.value === category.buttonStyle
+										: buttonStyle.value === 2}
 								>
 									{buttonStyle.name}
 								</option>
