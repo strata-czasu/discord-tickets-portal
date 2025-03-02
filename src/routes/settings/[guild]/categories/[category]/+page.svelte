@@ -50,8 +50,6 @@
 		{name: 'Secondary', value: 2},
 		{name: 'Success', value: 3},
 		{name: 'Danger', value: 4},
-		{name: 'Link', value: 5},
-		{name: 'Premium', value: 6},
 	];
 	const slowmodes = [
 		'5s',
