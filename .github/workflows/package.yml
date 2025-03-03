@@ -15,13 +15,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - run: rm ~/.npmrc
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
+          registry-url: 'https://npm.pkg.github.com'
       - uses: pnpm/action-setup@v4.1.0
         with:
           version: 10.5.2
           run_install: false
+      - run: cat ~/.npmrc
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       # - run: pnpm adduser --registry https://npm.pkg.github.com
@@ -30,7 +33,6 @@ jobs:
       # - run: pnpm login --registry https://npm.pkg.github.com
       #   env:
       #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo "always-auth=true" >> ~/.npmrc
       - run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
