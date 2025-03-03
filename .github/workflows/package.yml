@@ -24,6 +24,9 @@ jobs:
           run_install: false
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
+      - run: pnpm login
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: pnpm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
