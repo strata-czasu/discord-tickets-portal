@@ -19,7 +19,7 @@ jobs:
         with:
           version: 7.9.0
           run_install: false
-      - run: pnpm install
+      - run: pnpm install --frozen-lockfile
       - run: pnpm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
