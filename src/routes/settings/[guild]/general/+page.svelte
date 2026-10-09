@@ -50,7 +50,6 @@
 	settings.staleAfter = settings.staleAfter ? ms(settings.staleAfter) : '';
 	settings.workingHours = settings.workingHours.map((v) => (v === null ? [] : v));
 
-	let autoTag = $state(Array.isArray(settings.autoTag) ? 'custom' : settings.autoTag); // there are 2 inputs for autoTag, need separate variables
 	let error = $state(null);
 	let loading = $state(false);
 
@@ -63,8 +62,8 @@
 			json.staleAfter = settings.staleAfter ? ms(settings.staleAfter) : null;
 			// if (json.autoClose !== null && json.staleAfter === null)
 			// 	throw new Error('autoClose cannot be set unless staleAfter is also set.');
-			if (autoTag !== 'custom') json.autoTag = autoTag;
-			else if (!Array.isArray(settings.autoTag)) json.autoTag = []; // it only updates if you select (and optionally deselect) a channel
+			delete json.autoTag;
+			delete json.archive;
 			if (settings.logChannel === '') json.logChannel = null;
 			json.workingHours = settings.workingHours.map((v) => (v.length === 0 ? null : v));
 
@@ -123,51 +122,10 @@
 					<input type="text" class="input form-input" bind:value={settings.autoClose} />
 				</label>
 			</div>
-			<div>
-				<label class="font-medium">
-					Auto tag channels
-					<i
-						class="fa-solid fa-circle-question cursor-help text-gray-500 dark:text-slate-400"
-						title="Which channels should the bot respond with tags in?"
-					></i>
-					<select class="input form-multiselect block font-normal" bind:value={autoTag}>
-						<option value="custom">Specific channels</option>
-						<option value="ticket">Only ticket channels</option>
-						<option value="!ticket">All non-ticket channels</option>
-						<option value="all">All channels</option>
-					</select>
-					{#if autoTag === 'custom'}
-						<select
-							multiple
-							class="input form-multiselect font-normal"
-							bind:value={settings.autoTag}
-						>
-							{#each channels as channel}
-								<option value={channel.id} class="m-1 rounded p-1">
-									<!-- <i class="fa-solid fa-hashtag text-gray-500 dark:text-slate-400" /> -->
-									{channel.name}
-								</option>
-							{/each}
-						</select>
-					{/if}
-				</label>
-			</div>
-			<div>
-				<label for="archive" class="font-medium">
-					Archive
-					<i
-						class="fa-solid fa-circle-question cursor-help text-gray-500 dark:text-slate-400"
-						title="Save messages sent in tickets for future use?"
-					></i>
-					<input
-						type="checkbox"
-						id="archive"
-						name="archive"
-						class="form-checkbox"
-						bind:checked={settings.archive}
-					/>
-				</label>
-			</div>
+			<p class="text-sm text-slate-500">
+				Message archiving, transcripts, and automatic tags are currently disabled.
+				Previously archived data is retained and available through data export. Use /tag for manual replies.
+			</p>
 			<div>
 				<label class="font-medium">
 					Blocklist

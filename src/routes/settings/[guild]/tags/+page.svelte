@@ -36,6 +36,7 @@
 			error = null;
 			loading = true;
 			const json = { ...touch };
+			delete json.regex;
 
 			const response = await fetch(url, {
 				method: 'POST',
@@ -82,6 +83,7 @@
 			error = null;
 			loading = true;
 			const json = { ...tag };
+			delete json.regex;
 
 			const response = await fetch(`${url}/${json.id}`, {
 				method: 'PATCH',
