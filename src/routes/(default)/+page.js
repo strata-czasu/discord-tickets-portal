@@ -1,6 +1,5 @@
 import { redirect } from '@sveltejs/kit';
-// import { importJSON } from '@eartharoid/vite-plugin-i18n'; // doesn't work?
-import { importJSON } from '$lib/i18n';
+import { loadTranslations } from '$lib/i18n';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ parent, fetch }) {
@@ -15,10 +14,7 @@ export async function load({ parent, fetch }) {
 		redirect(302, `/${guilds[0].id}`);
 	}
 	return {
-		translations: importJSON(
-			await import(`../../lib/locales/${locale}/_common.json`),
-			await import(`../../lib/locales/${locale}/misc.json`)
-		),
+		translations: loadTranslations(locale, '_common', 'misc'),
 		guilds
 	};
 }
