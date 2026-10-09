@@ -18,16 +18,6 @@
 	</label>
 </div>
 <div>
-	<label>
-		<span class="font-medium">Auto tag regular expression</span>
-		<i
-			class="fa-solid fa-circle-question cursor-help text-gray-500 dark:text-slate-400"
-			title="Optional - regex to trigger this tag"
-		></i>
-		<input type="text" class="input form-input" bind:value={tag.regex} />
-	</label>
-</div>
-<div>
 	<label class="font-medium">
 		<span class="font-medium">Content</span>
 		<Required />
